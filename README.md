@@ -15,7 +15,7 @@ In Redmine, if you upload an image with spaces in the name then it can be diffic
 
 See: http://www.redmine.org/issues/10189
 
-The image menu button detects the if there are spaces and inserts a modified path to support spaces file name.
+The image menu button detects if there are spaces and inserts a modified path to support spaces file name.
 
 ## Installation
 
