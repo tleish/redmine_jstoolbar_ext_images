@@ -6,6 +6,10 @@ The Redmine jsToolbar Images Extension enhances the images button for the [Redmi
 
 ![Buttons](https://raw.githubusercontent.com/tleish/redmine_jstoolbar_ext_images/master/assets/images/screenshot.png)
 
+## Requirements
+
+This plugin requires the [Redmine jsToolbar Ext plugin](https://github.com/tleish/redmine_jstoolbar_ext) to also be installed.
+
 ### Images with Spaces in File Name
 In Redmine, if you upload an image with spaces in the name then it can be difficult to insert into the wiki text for viewing.
 
