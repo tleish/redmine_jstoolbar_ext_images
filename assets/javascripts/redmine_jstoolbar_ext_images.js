@@ -108,29 +108,42 @@
 
     var img_buttons = function(){
       return $.map(images, function (filename) {
-        var data = img_button_data(filename);
-        return build_button(data);
+        var img_data = img_button_data(filename);
+        var img_thumbnail_data = img_thumbnail_button_data(filename);
+        return build_button(img_data).add(build_thumbnail_button(img_thumbnail_data));
       });
     };
 
     var other_button = function(){
       var fn = RedmineWikiToolbarExt.ImagesOriginalFn.replace(/this/, 'toolbar');
-      return $('<button>[' + jsToolBar.strings['Image'] + ']</button>')
+      return $('<button class="full">[' + jsToolBar.strings['Image'] + ']</button>')
         .click(function(){
           eval(fn);
-        });
+        }).add(build_thumbnail_button({ label: '', beg: '{{thumbnail(', end: ')}}' }));
     };
 
     var img_button_data = function(filename){
       var basename = filename.split('/').pop();
       var path = ( decodeURIComponent(basename) === basename ) ? basename : filename;
       return  { label: basename, beg: '!' + path + '!', end: '' };
-    }
+    };
+
+    var img_thumbnail_button_data = function(filename){
+      var basename = filename.split('/').pop();
+      var path = ( decodeURIComponent(basename) === basename ) ? basename : filename;
+      return  { label: basename, beg: '{{thumbnail(' + path + ')}}', end: '' };
+    };
 
     var build_button = function (data) {
-      return $('<button>' + decodeURIComponent(data.label) + '</button>')
+      return $('<button class="full">' + decodeURIComponent(data.label) + '</button>')
         .data(data)
-        .click( image_button_click );
+        .click( image_button_click);
+    };
+
+    var build_thumbnail_button = function (data) {
+      return $('<button class="thumbnail">&gt; thumb</button>')
+        .data(data)
+        .click( image_button_click);
     };
 
     var image_button_click = function(event){

@@ -10,7 +10,8 @@
      end
 
      content_for :header_tags do
-        javascript_include_tag('redmine_jstoolbar_ext_images.js', plugin: 'redmine_jstoolbar_ext_images') + "\n"
+        javascript_include_tag('redmine_jstoolbar_ext_images.js', plugin: 'redmine_jstoolbar_ext_images') + "\n"  +
+          stylesheet_link_tag('redmine_jstoolbar_ext_images.css', plugin: 'redmine_jstoolbar_ext_images') + "\n"
      end
    end
 -%>
