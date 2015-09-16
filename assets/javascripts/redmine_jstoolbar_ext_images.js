@@ -38,6 +38,7 @@
       var files = [];
       $.merge(files, old_attachments());
       $.merge(files, new_attachments());
+      $.merge(files, cbp_images());
       return files.sort(sort_files_by_name);
     };
 
@@ -57,6 +58,11 @@
       var download_id = $(this).siblings("input[name$='[token]']:first").val().split('.')[0];
       var url_encoded_name = encodeURIComponent($(this).val()).replace(/\+/g, '%20');
       return attachments_url + download_id + '/' + url_encoded_name;
+    };
+
+    var cbp_images = function(){
+      var files = $('#cbp_images_form .name').map(function() { return this.value; });
+      return files.length ? files : [];
     };
 
     var images = function() {
