@@ -60,6 +60,9 @@
       return attachments_url + download_id + '/' + url_encoded_name;
     };
 
+    // cbp = clipboard_image_paste
+    // Redmine plugin for pasting cropped image from clipboard as an attachment.
+    // https://github.com/peclik/clipboard_image_paste
     var cbp_images = function(){
       var files = $('#cbp_images_form .name').map(function() { return this.value; });
       return files.length ? files : [];
