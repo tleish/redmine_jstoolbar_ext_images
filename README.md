@@ -10,12 +10,10 @@ The Redmine jsToolbar Images Extension enhances the images button for the [Redmi
 
 This plugin requires the [Redmine jsToolbar Ext plugin](https://github.com/tleish/redmine_jstoolbar_ext) to also be installed.
 
-### Images with Spaces in File Name
-In Redmine, if you upload an image with spaces in the name then it can be difficult to insert into the wiki text for viewing.
-
-See: http://www.redmine.org/issues/10189
-
-The image menu button detects if there are spaces and inserts a modified path to support spaces file name.
+## Features
+* Easily insert images (or thumbnails) that are uploaded or about to be upload 
+* Supports [Redmine Clipboard Image Paste](https://github.com/peclik/clipboard_image_paste) plugin.
+* Fixes images with Spaces in File Name: In Redmine, if you upload an image with spaces in the name then it can be difficult to insert into the wiki text for viewing. (see: [Redmine Issue #10189](http://www.redmine.org/issues/10189))
 
 ## Installation
 
@@ -30,3 +28,4 @@ restart Redmine
                                  
 * [Redmine jsToolbar Buttons Extension](https://github.com/tleish/redmine_jstoolbar_ext_buttons)
 * [Redmine jsToolbar CodeRay Extension](https://github.com/tleish/redmine_jstoolbar_ext_coderay)
+* [Redmine Clipboard Image Paste](https://github.com/peclik/clipboard_image_paste)
