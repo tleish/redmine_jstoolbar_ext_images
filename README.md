@@ -19,6 +19,7 @@ This plugin requires the [Redmine jsToolbar Ext plugin](https://github.com/tleis
 
 ```
 $ cd redmine/plugins
+$ git clone https://github.com/tleish/redmine_jstoolbar_ext
 $ git clone https://github.com/tleish/redmine_jstoolbar_ext_images
 ```
 
