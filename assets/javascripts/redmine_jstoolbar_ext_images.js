@@ -122,10 +122,18 @@
         }).add(build_thumbnail_button({ label: '', beg: '{{thumbnail(', end: ')}}' }));
     };
 
+    var img_button_beg = {
+      textile: '!%s!',
+      markdown: '![](%s)'
+    };
+
+    var markdown_type = RedmineWikiToolbarExt.Markup.type();
+
     var img_button_data = function(filename){
       var basename = filename.split('/').pop();
       var path = ( decodeURIComponent(basename) === basename ) ? basename : filename;
-      return  { label: basename, beg: '!' + path + '!', end: '' };
+      var beg = img_button_beg[markdown_type].replace(/%s/, path);
+      return  { label: basename, beg: beg, end: '' };
     };
 
     var img_thumbnail_button_data = function(filename){

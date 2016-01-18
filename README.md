@@ -14,6 +14,7 @@ This plugin requires the [Redmine jsToolbar Ext plugin](https://github.com/tleis
 * Easily insert images (or thumbnails) that are uploaded or about to be upload 
 * Supports [Redmine Clipboard Image Paste](https://github.com/peclik/clipboard_image_paste) plugin.
 * Fixes images with Spaces in File Name: In Redmine, if you upload an image with spaces in the name then it can be difficult to insert into the wiki text for viewing. (see: [Redmine Issue #10189](http://www.redmine.org/issues/10189))
+* Supports both Textile and Markdown
 
 ## Installation
 
