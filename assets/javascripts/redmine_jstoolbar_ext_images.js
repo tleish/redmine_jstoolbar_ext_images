@@ -122,7 +122,6 @@
         }).add(build_thumbnail_button({ label: '', beg: '{{thumbnail(', end: ')}}' }));
     };
 
-
     var img_button_beg = {
       textile: '!%s!',
       markdown: '![](%s)'
@@ -136,19 +135,6 @@
       var beg = img_button_beg[markdown_type].replace(/%s/, path);
       return  { label: basename, beg: beg, end: '' };
     };
-
-
-    //fn: { wiki: function (event) {
-    //  var link_title = {
-    //    textile: {beg: '"Link Title":', end: ''},
-    //    markdown: {beg: '[Link Title](', end: ')'}
-    //  };
-    //  var type = RedmineWikiToolbarExt.Markup.type();
-    //  this.encloseSelection(link_title[type].beg, link_title[type].end, function (str) {
-    //    if (str.length == 0) str = 'link';
-    //    return str;
-    //  })
-    //}}
 
     var img_thumbnail_button_data = function(filename){
       var basename = filename.split('/').pop();
