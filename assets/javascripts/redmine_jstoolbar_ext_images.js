@@ -119,7 +119,7 @@
       return $('<button class="full">[' + jsToolBar.strings['Image'] + ']</button>')
         .click(function(){
           eval(fn);
-        }).add(build_thumbnail_button({ label: '', beg: '{{thumbnail(', end: ')}}' }));
+        }).add(build_thumbnail_button({ label: '', beg: '{{thumbnail(', end: ', size=100, title=Thumbnail)}}' }));
     };
 
     var img_button_beg = {
@@ -139,11 +139,13 @@
     var img_thumbnail_button_data = function(filename){
       var basename = filename.split('/').pop();
       var path = ( decodeURIComponent(basename) === basename ) ? basename : filename;
-      return  { label: basename, beg: '{{thumbnail(' + path + ')}}', end: '' };
+      return  { label: basename, beg: '{{thumbnail(' + path + ', size=100, title=' + path, end: ')}}' };
     };
 
     var build_button = function (data) {
-      return $('<button class="full">' + decodeURIComponent(data.label) + '</button>')
+      var title = data.label.replace(/"/g, '&quot;');
+      var text = decodeURIComponent(data.label);
+      return $('<button class="full" title="' + title + '">' + text + '</button>')
         .data(data)
         .click( image_button_click);
     };
