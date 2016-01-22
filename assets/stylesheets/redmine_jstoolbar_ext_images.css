@@ -1,4 +1,4 @@
 .jstb_img_submenu { width: 301px; }
 .jstb_img_submenu button { margin: 0 }
-.jstb_img_submenu button.full { width: 250px; }
+.jstb_img_submenu button.full { width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .jstb_img_submenu button.thumbnail { width: 51px; font-size: 10px; }
