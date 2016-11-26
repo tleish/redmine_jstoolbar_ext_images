@@ -42,9 +42,15 @@
       return files.sort(sort_files_by_name);
     };
 
+    var extract_filename_from_url = function(filename) {
+      if (filename.lastIndexOf('/') != -1)
+        filename = decodeURIComponent(filename.substring(filename.lastIndexOf('/')+1));
+      return filename;
+    };
+
     var old_attachments = function(){
       var files = $('div.attachments .icon-attachment').map(function () {
-        return $(this).attr('href');
+        return extract_filename_from_url($(this).attr('href'));
       });
       return files.length ? files : [];
     };
@@ -56,8 +62,7 @@
 
     var new_attachment_url = function(){
       var download_id = $(this).siblings("input[name$='[token]']:first").val().split('.')[0];
-      var url_encoded_name = encodeURIComponent($(this).val()).replace(/\+/g, '%20');
-      return attachments_url + download_id + '/' + url_encoded_name;
+      return extract_filename_from_url($(this).val());
     };
 
     // cbp = clipboard_image_paste
