@@ -1,6 +1,10 @@
 # encoding: utf-8
 require_dependency 'redmine_jstoolbar_ext_images'
 
+ActionDispatch::Callbacks.to_prepare do
+  require_dependency 'wiki_formatting_macros_patch'
+end
+
 Redmine::Plugin.register :redmine_jstoolbar_ext_images do
   name 'Redmine jsToolbar Images Extension'
   author 'Thomas Leishman'

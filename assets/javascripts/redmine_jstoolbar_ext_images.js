@@ -42,27 +42,22 @@
       return files.sort(sort_files_by_name);
     };
 
-    var extract_filename_from_url = function(filename) {
-      if (filename.lastIndexOf('/') != -1)
-        filename = decodeURIComponent(filename.substring(filename.lastIndexOf('/')+1));
-      return filename;
-    };
-
     var old_attachments = function(){
       var files = $('div.attachments .icon-attachment').map(function () {
-        return extract_filename_from_url($(this).attr('href'));
+        return $(this).attr('href');
       });
       return files.length ? files : [];
     };
 
     var new_attachments = function(){
-      var files = $('#attachments_fields .filename').map(new_attachment_url);
+      var files = $('#attachments_fields .filename, .attachments_fields .filename').map(new_attachment_url);
       return files.length ? files : [];
     };
 
     var new_attachment_url = function(){
       var download_id = $(this).siblings("input[name$='[token]']:first").val().split('.')[0];
-      return extract_filename_from_url($(this).val());
+      var url_encoded_name = encodeURIComponent($(this).val()).replace(/\+/g, '%20');
+      return attachments_url + download_id + '/' + url_encoded_name;
     };
 
     // cbp = clipboard_image_paste
@@ -105,7 +100,7 @@
 
     var get = function(toolbar_obj, images_array){
       toolbar = toolbar_obj, images = images_array;
-      if(images.length ===0 ) return [];
+      if(images.length === 0) return [];
       var buttons = img_buttons();
       buttons.push(other_button());
       return buttons;
@@ -136,14 +131,14 @@
 
     var img_button_data = function(filename){
       var basename = filename.split('/').pop();
-      var path = ( decodeURIComponent(basename) === basename ) ? basename : filename;
+      var path = basename;
       var beg = img_button_beg[markdown_type].replace(/%s/, path);
       return  { label: basename, beg: beg, end: '' };
     };
 
     var img_thumbnail_button_data = function(filename){
       var basename = filename.split('/').pop();
-      var path = ( decodeURIComponent(basename) === basename ) ? basename : filename;
+      var path = decodeURIComponent(basename);
       return  { label: basename, beg: '{{thumbnail(' + path + ', size=100, title=' + path, end: ')}}' };
     };
 
@@ -158,7 +153,7 @@
     var build_thumbnail_button = function (data) {
       return $('<button class="thumbnail">&gt; thumb</button>')
         .data(data)
-        .click( image_button_click);
+        .click(image_button_click);
     };
 
     var image_button_click = function(event){
